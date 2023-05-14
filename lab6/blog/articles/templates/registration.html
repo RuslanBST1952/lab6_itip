@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/create_post.css">
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="header post-title">
+        <a href="http://127.0.0.1:8000">Все статьи</a><br>
+        <a href="http://127.0.0.1:8000/user/auth/">Авторизация</a><br>
+    </div>
+    <div class="content password">
+        {%load static%}
+        <h1>Регистрация</h1>
+        <form method="POST">{% csrf_token %}
+            <input type="text" name="username" placeholder="Логин" value="{{ form.username }}"><br>            
+            <input type="email" name="mail" placeholder="email" value="{{ form.mail }}"><br>
+            <input type="password" name="password" placeholder="Пароль" value="{{ form.password }}"><br>
+            <input type="submit" value="Отправить"><br>
+        </form> 
+        <div class="errors">{{ form.errors }}</div>    
+    </div>
+</body>
+</html>
